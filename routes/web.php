@@ -26,11 +26,11 @@ Route::get("/inicio", function () {
 Route::get("/peliculas", function () {
     return "listado de peliculas";
 });
-// 
-// Route::get("/pelicula/{id}", function($id){
-//   return "Me pidieron la pelicula $id";
-// });
-//
-// Route::get("/saludar/{nombre}/{apellido?}", function($nombre,$apellido="Sin apellido"){
-//   return "Bienvenido $nombre $apellido";
-// });
+
+Route::get("/pelicula/{id}", function($id){
+  return "Me pidieron la pelicula $id";
+});
+
+Route::get("/saludar/{nombre}/{apellido?}", function($nombre,$apellido="Sin apellido"){
+  return "Bienvenido $nombre $apellido";
+});
