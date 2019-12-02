@@ -24,11 +24,29 @@ Route::get("/inicio", function () {
 });
 
 Route::get("/peliculas", function () {
-    return "listado de peliculas";
+
+$peliculas =[
+  0 => [
+  "nombre" => "Buscando a Nemo",
+  "rating" => 8.5,
+  ],
+  1 => [
+    "nombre" => "Toy Story",
+    "rating" => 7.2,
+  ],
+  2 => [
+    "nombre" => "Toy Story 2",
+    "rating" => 5.8
+  ]
+
+];
+    $vac = compact("peliculas");
+    return view("listadoPeliculas", $vac);
 });
 
 Route::get("/pelicula/{id}", function($id){
-  return "Me pidieron la pelicula $id";
+  $vac = compact("id");
+  return view("detallePelicula", $vac);
 });
 
 Route::get("/saludar/{nombre}/{apellido?}", function($nombre,$apellido="Sin apellido"){
