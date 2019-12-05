@@ -19,6 +19,8 @@ Route::get('/', function () {
 //   return view("bienvenido");
 // });
 
+Route::get("actores", "ActoresController@listado");
+
 Route::get("/inicio", function () {
     return "Hola, bienvenidos a mi inicio";
 });
