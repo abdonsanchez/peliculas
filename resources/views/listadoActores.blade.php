@@ -15,4 +15,6 @@ Listado de Actores
         <p>No hay actores</p>
       @endforelse
     </ul>
+    {{-- con el metodo link agregamos la navegacion entre paginas (los hipervinculos) y solo esta disponible si trajimos estos actores atra vez del metodo paginate, por el contrario no va a funcionar si lo hicimos atravez del metodo all. --}}
+  {{$actores->links()}}
 @endsection
