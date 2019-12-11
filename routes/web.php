@@ -19,11 +19,14 @@ Route::get('/', function () {
 //   return view("bienvenido");
 // });
 
-Route::get("actores", "ActoresController@listado");
 
 Route::get("/inicio", function () {
     return "Hola, bienvenidos a mi inicio";
 });
+
+Route::post("/borrarPelicula","PeliculasController@borrar");
+
+Route::get("actores", "ActoresController@listado");
 
 Route::get("/peliculas", "PeliculasController@listado");
 
@@ -31,12 +34,13 @@ Route::get("/pelicula/{id}", "PeliculasController@detalle");
 
 Route::get("/actor/top", "PeliculasController@top");
 
+Route::get("/agregarPelicula", function (){
+  return view("agregarPelicula");
+});
+
 Route::get("/saludar/{nombre}/{apellido?}", function($nombre,$apellido="Sin apellido"){
   return "Bienvenido $nombre $apellido";
 });
 
-Route::get("/agregarPelicula", function (){
-  return view("agregarPelicula");
-});
 
 Route::post("/agregarPelicula", "PeliculasController@agregar");

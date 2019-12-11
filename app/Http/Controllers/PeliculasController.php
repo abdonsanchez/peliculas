@@ -70,4 +70,13 @@ class PeliculasController extends Controller
     return redirect("/peliculas");
   }
 
+  public function borrar(Request $formulario){
+    $id = $formulario["id"];
+    $pelicula = Pelicula::find($id);
+
+    $pelicula->delete();
+
+    return redirect("/peliculas");
+  }
+
 }
