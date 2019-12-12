@@ -38,9 +38,8 @@ Route::get("/agregarPelicula", function (){
   return view("agregarPelicula");
 });
 
+Route::post("/agregarPelicula", "PeliculasController@agregar");
+
 Route::get("/saludar/{nombre}/{apellido?}", function($nombre,$apellido="Sin apellido"){
   return "Bienvenido $nombre $apellido";
 });
-
-
-Route::post("/agregarPelicula", "PeliculasController@agregar");

@@ -55,6 +55,31 @@ class PeliculasController extends Controller
   // esta funcion va a trabajar con un formulario para esto estamos obligados en la funcion controladora a recibir un objeto de tipo Request, de esta manera nuestra variable de tipo Request va a obtener todos los datos del formulario haciendo que ya no tengamos que trabajar con $get y con $post donde laravel automaticamente a agregado una capa de seguridad.
   public function agregar (Request $req) {
 
+// el formato de $reglas es: del lado izquierdo vamos a poner los campos del formulario que queremos validar, vamos a tener que utilizar el mismo name que pusimos en el imput del formulario.
+// del lado derecho laravel nos da un conjunto de reglas standar de validacion, todas las reglas disponibles la tenemos en la documentacion de laravel.
+    $reglas = [
+// para pedir que el titulo sea unico en la db, aclaramos que sea unico en la tabla de peliculas en la columna de titulo.
+      "title" => "string|min:3|unique:movies,title",
+      "awards" => "integer|min:0",
+      "release_date" => "date",
+      "rating" => "numeric|min:0|max:10",
+    ];
+// los mensajes de error son una aclaracion para cada una de las reglas que hallamos utilizado
+    $mensajes = [
+      // :attribute se va a rellenar con el campo de error
+      "string" => "El campo :attribute debe ser un texto",
+      // :min se va a reemplazar por el numero que hallamos configurado en la regla de validacion
+      "min" => "El campo :attribute tiene un minimo de :min",
+      "max" => "El campo :attribute tiene un maximo de :max",
+      "date" => "El campo :attribute debe ser una fecha",
+      "numeric" => "El campo :attribute debe ser un numero",
+      "integer" => "El campo :attribute debe ser un numero entero",
+      "unique" => "El campo :attribute se encuentra repetido",
+    ];
+
+    // agregamos la validacion atravez de validate() un metodo que se puede utilizar en cualquier funcion dentro de un controlador. validate() recibe 3 cosas, el formulario a validar, las reglas con lo que lo queremos validar y los mensajes de error en caso de falla
+    $this->validate($req, $reglas, $mensajes);
+
     $peliculaNueva = new Pelicula();
 
     // con esto traemos los campos del formulario y lo llevamos (guardamos) a la base de datos a travez de la variable $peliculaNueva, laravel ya sabe que los objetos de tipo Peliculas estan asociados con la tabla movies.
