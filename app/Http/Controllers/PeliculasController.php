@@ -63,6 +63,7 @@ class PeliculasController extends Controller
       "awards" => "integer|min:0",
       "release_date" => "date",
       "rating" => "numeric|min:0|max:10",
+      "poster" => "file",
     ];
 // los mensajes de error son una aclaracion para cada una de las reglas que hallamos utilizado
     $mensajes = [
@@ -81,6 +82,16 @@ class PeliculasController extends Controller
     $this->validate($req, $reglas, $mensajes);
 
     $peliculaNueva = new Pelicula();
+
+    // guardamos la imagen, en la variable $req tenemos todo el formulario enviado y para obtener la imagen subida utilizamos el metodo file con el nombre del archivo que se acaba de subir (poster) una vez obtenido para almacenarlo utilizamos el metodo store() y diciendo en que carpeta dentro de storage lo queremos almacenar "public" siempre que tengamos archivos subidos que queremos mostrar en el frontend estamos obligados a escribir "public".
+    // sin embargo este archivo devuelve la ruta entera donde se va a guardar el archivo incluyendo el nombre final.
+    $ruta = $req->file("poster")->store("public");
+
+    // a nosotros solo nos interesa el nombre del archivo, para eso utilizamos la funcion de php y no de "laravel" basename() que va a recortar la ruta y nos va a dar unicamente el nombre del archivo
+    $nombreArchivo =  basename("$ruta");
+
+    // una vez que ya recortamos el nombre, a la pelicula nueva que estamos por almacenar en la base de datos vamos a guardar en la columna poster el nombre del archivo.
+    $peliculaNueva->poster = $nombreArchivo;
 
     // con esto traemos los campos del formulario y lo llevamos (guardamos) a la base de datos a travez de la variable $peliculaNueva, laravel ya sabe que los objetos de tipo Peliculas estan asociados con la tabla movies.
     $peliculaNueva->title = $req["title"];

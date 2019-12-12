@@ -3,15 +3,15 @@
 @section("principal")
 
   <ul class="errores" style="color:red">
-    {{-- laravel nos da la variable $errors->all() que nos trae los errores que se hallan generado en el formulario --}}
+    {{-- laravel nos da la variable $errors que con el metodo->all() nos trae los errores que se hallan generado en el formulario --}}
     @foreach ($errors->all() as $error)
       <li>
         {{$error}}
       </li>
     @endforeach
   </ul>
-
-  <form class="" action="/agregarPelicula" method="post">
+{{-- enctype="multipart/form-data" es un atributo nesesario cuando mandamos archivos --}}
+  <form class="" action="/agregarPelicula" method="post" enctype="multipart/form-data">
     {{-- dentro del formulario estamos obligados a escribir la funcion csrf_field() con agregar esta funcion dentro del formulario automaticamente en el html se esta agregando un campo de seguridad, sin esto el formulario no va a andar. --}}
     {{csrf_field()}}
     <div class="">
@@ -30,6 +30,10 @@
     <div class="">
       <label for="release_date">Fecha de estreno</label>
       <input type="date" name="release_date" value="{{old("release_date")}}">
+    </div>
+    <div class="">
+      <label for="">Poster</label>
+      <input type="file" name="poster" value="">
     </div>
     <div class="">
       <input type="submit" name="" value="Agregar pelicula">
