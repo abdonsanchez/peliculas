@@ -20,6 +20,15 @@ Listado Peliculas
           <p>Genero: {{$pelicula->genero->name}}</p>
           @endif
 
+          <p>Actores:</p>
+          <ul>
+            @foreach ($pelicula->actores as $actor)
+              <li>
+                {{$actor->getNombreCompleto()}}
+              </li>
+            @endforeach
+          </ul>
+
           {{-- @if($pelicula["rating"] > 8) --}}
           @if($pelicula->rating > 8)
           <p>{{ "Exelente" }}</p>
