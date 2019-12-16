@@ -14,7 +14,12 @@ Listado Peliculas
           {{-- Otro tipo de sintaxis es no tratar a la pelicula como si fuera un array
           sino tratarla como un objeto a travez del operador flecha
           <p>{{$pelicula["title"] }}</p> --}}
-          <p>{{$pelicula->title}}</p>
+          <p><a href="/pelicula/{{$pelicula->id}}">{{$pelicula->title}}</a></p>
+
+          @if ($pelicula->genero)
+          <p>Genero: {{$pelicula->genero->name}}</p>
+          @endif
+
           {{-- @if($pelicula["rating"] > 8) --}}
           @if($pelicula->rating > 8)
           <p>{{ "Exelente" }}</p>

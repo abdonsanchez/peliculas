@@ -40,6 +40,8 @@ Route::get("/agregarPelicula", function (){
 
 Route::post("/agregarPelicula", "PeliculasController@agregar");
 
+Route::get("/generos", "GenerosController@genero");
+
 Route::get("/saludar/{nombre}/{apellido?}", function($nombre,$apellido="Sin apellido"){
   return "Bienvenido $nombre $apellido";
 });
