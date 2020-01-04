@@ -3,11 +3,12 @@
 @section("principal")
 
   <h1>Generos</h1>
-
   <ul>
     @foreach($generos as $genero)
       <li>
         {{$genero->name}}
+        {{-- <p>Ranking: {{$genero->ranking()}}</p> --}}
+
 
       Peliculas:
       <ul>

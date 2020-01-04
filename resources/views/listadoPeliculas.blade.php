@@ -24,7 +24,7 @@ Listado Peliculas
           <ul>
             @foreach ($pelicula->actores as $actor)
               <li>
-                {{$actor->getNombreCompleto()}}
+                {{$actor->getnombreCompleto()}} idRating: {{$actor->idRating()}}
               </li>
             @endforeach
           </ul>
@@ -39,4 +39,5 @@ Listado Peliculas
         <p>No hay peliculas</p>
       @endforelse
     </ul>
+     {{-- {{$peliculas->putear()}} --}}
 @endsection

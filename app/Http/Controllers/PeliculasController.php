@@ -6,11 +6,18 @@ use Illuminate\Http\Request;
 
 // Le estoy diciendo que voy a hablar en este controlador de datos de tipo pelicula
 use App\Pelicula;
+// llame a la clase Actor para hacer una prueba
+use App\Actor;
+
+use Auth;
 
 class PeliculasController extends Controller
 {
 
   public function listado () {
+    // laravel nos da un metodo para obtener el usuario logueado "Auth::user()"
+    $usuarioLog = Auth::user();
+    dd($usuarioLog);
 
   // $peliculas =[
   //   0 => [
@@ -113,6 +120,33 @@ class PeliculasController extends Controller
     $pelicula->delete();
 
     return redirect("/peliculas");
+  }
+
+// Funciones mias
+  public function putear() {
+    $peliculas = Pelicula::all();
+    $actores = Actor::all();
+    // echo $peliculas[0]["id"],$peliculas[0]["title"];
+    echo $peliculas[0]["id"],$actores[2]["first_name"];
+    // echo $peliculas->title."la concha de tumadre";
+  }
+
+  public function sumar($num1, $num2) {
+    $total = $num1 + $num2;
+    echo "La suma es: $total";
+  }
+
+  public function restar($num1, $num2) {
+    $total = $num1 - $num2;
+    echo "La resta es: $total";
+  }
+
+  public function enamorado() {
+    return "porque estoy enamorado";
+  }
+
+  public function nombreCompleto() {
+    return $this->first_name." ".$this->last_name;
   }
 
 }

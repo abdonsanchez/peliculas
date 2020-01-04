@@ -19,4 +19,11 @@ class Pelicula extends Model
     public function actores() {
       return $this->belongsToMany("App\Actor", "actor_movie", "movie_id", "actor_id");
     }
+
+    // funciones mias
+    public function sum($num1,$num2) {
+      $suma = $num1 + $num2;
+      return "La suma es $suma";
+    }
+
 }

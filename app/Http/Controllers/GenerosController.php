@@ -14,4 +14,10 @@ class GenerosController extends Controller
       $vac = compact("generos");
       return view("listadoGeneros", $vac);
   }
+
+  // funciones mias
+  public function ranking() {
+    return $this->ranking;
+  }
+
 }
