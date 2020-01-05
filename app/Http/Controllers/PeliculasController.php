@@ -16,8 +16,9 @@ class PeliculasController extends Controller
 
   public function listado () {
     // laravel nos da un metodo para obtener el usuario logueado "Auth::user()"
-    $usuarioLog = Auth::user();
-    dd($usuarioLog);
+    // $usuarioLog = Auth::user();
+    // dd($usuarioLog);
+
 
   // $peliculas =[
   //   0 => [
@@ -37,6 +38,7 @@ class PeliculasController extends Controller
 
       // usando el orm Eloquent reemplazamos la sintaxis el codigo de arriba por el siguiente
       $peliculas = Pelicula::all();
+      // dd($peliculas);
 
       $vac = compact("peliculas");
       return view("listadoPeliculas", $vac);
