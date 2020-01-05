@@ -124,6 +124,12 @@ class PeliculasController extends Controller
     return redirect("/peliculas");
   }
 
+  public function listadoApi(){
+    $peliculas = Pelicula::all();
+    
+    return json_encode($peliculas);
+  }
+
 // Funciones mias
   public function putear() {
     $peliculas = Pelicula::all();

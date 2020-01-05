@@ -44,6 +44,8 @@ Route::get("/saludar/{nombre}/{apellido?}", function($nombre,$apellido="Sin apel
   return "Bienvenido $nombre $apellido";
 });
 
+Route::get("/clima", "ClimaController@verClima");
+
 // rutas mias
 Route::get("/generos", "GenerosController@genero");
 
