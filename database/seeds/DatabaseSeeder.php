@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        // =$this->call(SeederDePrueba::class);
+
+        // DB::table('genres')->insert([
+        //   "name" => "Experimental",
+        //   "ranking" => 22
+        // ]);
+
+        factory(App\Pelicula::class, 50)->create();
     }
 }
