@@ -47,7 +47,7 @@ Route::get("/saludar/{nombre}/{apellido?}", function($nombre,$apellido="Sin apel
 Route::get("/clima", "ClimaController@verClima");
 
 // rutas mias
-Route::get("/generos", "GenerosController@genero");
+Route::get("/generos", "GenerosController@genero")->middleware('prueba');
 
 Route::get("/putear", "PeliculasController@putear");
 

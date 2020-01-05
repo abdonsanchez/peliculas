@@ -19,6 +19,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        // si ponemos el middleware en este array aplica a todas las paginas
+        // \App\http\middleware\MiddlewarePrueba::class,
     ];
 
     /**
@@ -61,6 +63,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        // si ponemos el middleware en este array, le damos un apodo y cada vez que nombren el apodo, estoy hablando del middleware que queda en esta clase.
+        'prueba' => \App\http\middleware\MiddlewarePrueba::class,
     ];
 
     /**
