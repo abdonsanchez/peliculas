@@ -97,7 +97,7 @@ class PeliculasController extends Controller
     $ruta = $req->file("poster")->store("public");
 
     // a nosotros solo nos interesa el nombre del archivo, para eso utilizamos la funcion de php y no de "laravel" basename() que va a recortar la ruta y nos va a dar unicamente el nombre del archivo
-    $nombreArchivo =  basename("$ruta");
+    $nombreArchivo =  basename($ruta);
 
     // una vez que ya recortamos el nombre, a la pelicula nueva que estamos por almacenar en la base de datos vamos a guardar en la columna poster el nombre del archivo.
     $peliculaNueva->poster = $nombreArchivo;
@@ -126,7 +126,7 @@ class PeliculasController extends Controller
 
   public function listadoApi(){
     $peliculas = Pelicula::all();
-    
+
     return json_encode($peliculas);
   }
 
@@ -135,7 +135,7 @@ class PeliculasController extends Controller
     $peliculas = Pelicula::all();
     $actores = Actor::all();
     // echo $peliculas[0]["id"],$peliculas[0]["title"];
-    echo $peliculas[0]["id"],$actores[2]["first_name"];
+    echo $peliculas[0]["id"],$actores[3]["first_name"];
     // echo $peliculas->title."la concha de tumadre";
   }
 

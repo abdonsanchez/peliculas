@@ -19,7 +19,6 @@ class ActoresController extends Controller
     }
 
      // funciones mias
-
     public function prueba() {
       $actores = Actor::all();
       $puteadita = "la concha que lo pario";
